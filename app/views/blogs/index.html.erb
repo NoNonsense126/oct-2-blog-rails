@@ -1,0 +1,11 @@
+<h1>Blog Index</h1>
+
+<% @blogs.each_with_index do |blog, index| %>
+
+  <%= link_to blog do %>
+    <p><%= "#{index + 1}. #{blog.title.truncate(15)}" %></p>
+  <% end %>
+
+<% end %>
+
+<%= link_to "Post a new blog", new_blog_path, class: "btn btn-info" %>

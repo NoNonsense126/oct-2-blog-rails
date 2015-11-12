@@ -1,0 +1,8 @@
+<h1><%= @blog.title %>
+  <span style="font-size: 12px;">(<%= @blog.view_count%> views)</span>
+</h1>
+
+<p><%= @blog.body %></p>
+
+<%= link_to "Edit", edit_blog_path(@blog), class: "btn btn-success" %>
+<%= link_to "Delete", blog_path(@blog), method: :delete, class: "btn btn-danger" %>
