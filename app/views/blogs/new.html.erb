@@ -16,6 +16,13 @@
   <br />
 
   <div>
+    <%= f.label :tags %>
+    <%= f.text_field :tags_names, placeholder: "food, something, car" %>
+  </div>
+
+  <br />
+
+  <div>
     <%= f.submit "Create Blog!", class: "btn btn-info" %>
   </div>
 <% end %>

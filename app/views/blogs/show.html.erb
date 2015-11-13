@@ -4,5 +4,7 @@
 
 <p><%= @blog.body %></p>
 
+<p>Tags: <%= @blog.tags_names %></p>
+
 <%= link_to "Edit", edit_blog_path(@blog), class: "btn btn-success" %>
 <%= link_to "Delete", blog_path(@blog), method: :delete, class: "btn btn-danger" %>

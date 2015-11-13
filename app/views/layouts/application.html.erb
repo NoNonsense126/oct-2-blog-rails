@@ -1,14 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Blog2</title>
+  <title>Blog</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div>
+    <span>
+      <%= link_to "Home", root_path %>
+    </span>
+    <% if user_logged_in? %>
+      <span>
+        <%= link_to "Logout", logout_path, method: :delete %>
+      </span>
+      <span>
+        <%= "Hello, #{current_user.username}" %>
+      </span>
+    <% else %>
+      <span>
+        <%= link_to "Signup", signup_path %>
+      </span>
+      <span>
+        <%= link_to "Login", login_path %>
+      </span>
+    <% end %>
+  </div>
 
-<%= yield %>
+  <div>
+    <table class="table">
+      <% flash.each do |k, v| %>
+        <tr class="<%= k %>">
+          <td><%= v %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <%= yield %>
 
 </body>
 </html>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151112031708) do
+ActiveRecord::Schema.define(version: 20151113032903) do
 
   create_table "blogs", force: :cascade do |t|
     t.string   "title"
@@ -19,6 +19,26 @@ ActiveRecord::Schema.define(version: 20151112031708) do
     t.integer  "view_count", default: 0
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.integer  "user_id"
+  end
+
+  add_index "blogs", ["user_id"], name: "index_blogs_on_user_id"
+
+  create_table "tags", force: :cascade do |t|
+    t.integer  "blog_id"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "tags", ["blog_id"], name: "index_tags_on_blog_id"
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "username"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end
